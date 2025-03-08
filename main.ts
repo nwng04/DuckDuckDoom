@@ -8,3 +8,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
             duck
         `), music.PlaybackMode.UntilDone)
 })
+controller.up.onEvent(ControllerButtonEvent.Pressed, function on_up_pressed() {
+    scene.setBackgroundImage(assets.image`
+        ducklogo
+    `)
+})
