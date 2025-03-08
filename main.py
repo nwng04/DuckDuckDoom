@@ -11,3 +11,9 @@ def on_a_pressed():
         """)),
         music.PlaybackMode.UNTIL_DONE)
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
+
+def on_up_pressed():
+    scene.set_background_image(assets.image("""
+        ducklogo
+    """))
+controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
