@@ -1,0 +1,25 @@
+{
+    "song1": {
+        "data": "00780004080200",
+        "mimeType": "application/mkcd-song",
+        "displayName": "mySong",
+        "namespace": "mySongs."
+    },
+    "song2": {
+        "data": "0078000408020101001c000f05001202c102c20100040500280000006400280003050006000004120000000400012208000c000122100014000122",
+        "mimeType": "application/mkcd-song",
+        "displayName": "duck",
+        "namespace": "mySongs."
+    },
+    "song3": {
+        "data": "0078000408020108001c000e050046006603320000040a002d00000064001400010a0002000002120000000400012208000c000122100014000122",
+        "mimeType": "application/mkcd-song",
+        "displayName": "quack 2",
+        "namespace": "mySongs."
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
