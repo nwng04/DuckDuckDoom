@@ -15,6 +15,8 @@ ducks_alive: List[number] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5, 1, 2, 3]
 ducks_dead: number = 0
 birthRate: number = 0.5
 
+rounds_survived = 0
+
 current_actions: List[AppAction] = []
 
 #possible_actions = {'Detonate a thermonuclear bomb in the lake': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.01', 'span': '1'}, 'Introduce more nesting sites': {'impact_type': 'egg', 'impact_symbol': 'PLUS', 'impact_no': '10', 'span': '1'}, 'Release more ducks into the lake': {'impact_type': 'living', 'impact_symbol': 'PLUS', 'impact_no': '15', 'span': '1'}, 'Encourage visitors to feed the ducks': {'impact_type': 'all', 'impact_symbol': 'PLUS', 'impact_no': '8', 'span': '1'}, 'Introduce artificial nesting platforms': {'impact_type': 'egg', 'impact_symbol': 'PLUS', 'impact_no': '12', 'span': '1'}, 'Relocate ducks from overcrowded areas': {'impact_type': 'living', 'impact_symbol': 'PLUS', 'impact_no': '10', 'span': '1'}, 'Conservation group rescues injured ducks': {'impact_type': 'adult', 'impact_symbol': 'PLUS', 'impact_no': '7', 'span': '1'}, 'Provide floating platforms for safer nesting': {'impact_type': 'egg', 'impact_symbol': 'PLUS', 'impact_no': '9', 'span': '1'}, 'Farmers reduce pesticide use': {'impact_type': 'all', 'impact_symbol': 'PLUS', 'impact_no': '8', 'span': '3'}, 'Build safe winter shelters for ducks': {'impact_type': 'living', 'impact_symbol': 'PLUS', 'impact_no': '10', 'span': '2'}, 'Introduce fish stocking to improve food supply': {'impact_type': 'all', 'impact_symbol': 'PLUS', 'impact_no': '12', 'span': '3'}, 'Predators removed entirely from the area': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.7', 'span': '6'}, 'Restore wetland areas': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.15', 'span': '10'}, 'Build a protected duck sanctuary': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.2', 'span': '10'}, 'Regulate fishing to preserve food supply': {'impact_type': 'egg', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.3', 'span': '4'}, 'Encourage migration with feeding stations': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.1', 'span': '3'}, 'Limit human access to nesting sites': {'impact_type': 'egg', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.15', 'span': '5'}, 'A fox enters the lake and hunts ducks': {'impact_type': 'living', 'impact_symbol': 'MINUS', 'impact_no': '5', 'span': '1'}, 'A local festival disturbs the ducks': {'impact_type': 'living', 'impact_symbol': 'MINUS', 'impact_no': '5', 'span': '1'}, 'Dominant ducks fight over territory': {'impact_type': 'adult', 'impact_symbol': 'MINUS', 'impact_no': '3', 'span': '1'}, 'Raccoons steal eggs from nests': {'impact_type': 'egg', 'impact_symbol': 'MINUS', 'impact_no': '7', 'span': '1'}, 'Overfishing reduces available food': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.9', 'span': '5'}, 'A cold snap reduces food availability': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.85', 'span': '3'}, 'A hot summer dries up parts of the lake': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.95', 'span': '4'}, 'A sudden food shortage lowers survival': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.8', 'span': '5'}, 'A severe storm damages nesting sites': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.75', 'span': '2'}, 'A harsh winter reduces duck survival': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.8', 'span': '5'}, 'A pollution spill contaminates the water': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.7', 'span': '8'}, 'A late frost disrupts egg hatching': {'impact_type': 'egg', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.9', 'span': '4'}, 'Illegal hunting increases': {'impact_type': 'living', 'impact_symbol': 'MINUS', 'impact_no': '6', 'span': '1'}, 'Destroy overpopulated nesting areas': {'impact_type': 'egg', 'impact_symbol': 'MINUS', 'impact_no': '8', 'span': '1'}, 'Clear vegetation, reducing cover for nests': {'impact_type': 'egg', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.85', 'span': '3'}, 'Heavy rainfall floods nests': {'impact_type': 'egg', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.8', 'span': '2'}, 'A dry season reduces water levels': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.9', 'span': '5'}, 'Accidental pesticide spill reduces food sources': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.75', 'span': '4'}, 'Allow pet cats to roam near the lake': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.8', 'span': '3'}, 'Plant trees for more shelter': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.15', 'span': '6'}, 'Ban human feeding to prevent dependency': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.9', 'span': '4'}, 'Farm runoff increases algae': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.85', 'span': '6'}, 'Limited water due to drought': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.75', 'span': '7'}, 'Heavy boat traffic disturbs ducks': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.9', 'span': '5'}, 'Dumping of waste reduces water quality': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.7', 'span': '8'}, 'Introduce a new duck species to the lake': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.5', 'span': '5'}, 'Massive duck release for conservation': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.8', 'span': '4'}, 'A new virus emerges, significantly lowering survival': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.6', 'span': '8'}, 'A mysterious toxin enters the water': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.5', 'span': '7'}, 'Uncontrolled algae bloom depletes oxygen': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.4', 'span': '6'}, 'Farmers introduce pest control chemicals': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.3', 'span': '6'}, 'A major flood displaces most ducks': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.2', 'span': '5'}, 'A long-term drought dries up part of the lake': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.3', 'span': '7'}, 'Local government funds a massive wetland expansion': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.8', 'span': '5'}, 'Conservation efforts lead to a major baby boom': {'impact_type': 'baby', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.9', 'span': '4'}, 'Invasive species eradicated': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '1.7', 'span': '6'}, 'Farm pollution causes reproductive issues': {'impact_type': 'egg', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.7', 'span': '6'}, 'A new predator population spikes': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.6', 'span': '7'}, 'Fish stocks collapse, causing food shortages': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.5', 'span': '5'}, 'Perfect environmental conditions cause a baby boom': {'impact_type': 'baby', 'impact_symbol': 'MULTIPLY', 'impact_no': '3', 'span': '4'}, 'A record-breaking mating season doubles the duck population': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '2', 'span': '5'}, 'A protected wetland expands, providing ideal conditions': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '2.2', 'span': '8'}, 'An invasive predator is completely eradicated': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '2.5', 'span': '6'}, 'Extreme overbreeding leads to a duck population boom': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '2.5', 'span': '5'}, 'A nuclear accident poisons the ecosystem': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.01', 'span': '10'}, 'A massive oil spill devastates the lake': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.1', 'span': '10'}, 'A new disease wipes out most ducks': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.05', 'span': '9'}, 'A factory explosion pollutes the entire lake': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.1', 'span': '10'}, 'An unprecedented drought completely dries up the lake': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.02', 'span': '10'}, 'Illegal poaching wipes out an entire generation': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.1', 'span': '8'}, 'Major flooding washes away nearly all nests': {'impact_type': 'egg', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.2', 'span': '7'}, 'Invasive super-predators completely disrupt the ecosystem': {'impact_type': 'living', 'impact_symbol': 'MULTIPLY', 'impact_no': '0.25', 'span': '9'}, 'Governments introduce a large-scale breeding program': {'impact_type': 'all', 'impact_symbol': 'MULTIPLY', 'impact_no': '3', 'span': '6'}}
@@ -138,7 +140,7 @@ def update_ducks_alive():
     ducks_alive = ducks_alive[1:] + [0] # Move all ducks one step to the left and add 0 to the right
 
 def on_button_press(action: AppAction):
-    global gameOver
+    global gameOver, rounds_survived
     process_longstanding_effects()
     perform_action(action, True)
     update_ducks_alive()
@@ -153,10 +155,24 @@ def on_button_press(action: AppAction):
         counter = counter + 1
 
     if sum_ducks_alive < 1:
+        game.set_game_over_message(False, "Rounds Survived: " + rounds_survived)
+        game.splash("all the ducks r dead :(")
         game.game_over(False)
         return
         
+    rounds_survived = rounds_survived + 1
+
+    spritex = sprites.create(assets.image("""
+             mr_quack
+         """), SpriteKind.duck)
+    xpos = randint(10, 50)
+
+    if xpos > 30:
+        xpos = xpos + 120
+    spritex.set_position(xpos, randint(20, 110))
+
     game.splash("Ducks Alive: " + sum_ducks_alive + "\nDucks Dead: " + ducks_dead)
+    game.splash("Round " + (rounds_survived + 1))
     # Select random action A
     # Select random action B
     # Check that action A is different to action B
@@ -166,12 +182,12 @@ def on_button_press(action: AppAction):
 def boot_up():
     global actionA, actionB
     # Select random action A
-    action_a = possible_actions_list[randint(0, len(possible_actions_list))] #random.choice(list(possible_actions.keys()))
+    action_a = possible_actions_list[randint(0, len(possible_actions_list)-1)] #random.choice(list(possible_actions.keys()))
     actionA = AppAction(action_a[0], parse_float(action_a[3]), action_a[2], action_a[1], int(action_a[4]))
     # Select random action B
-    action_b = possible_actions_list[randint(0, len(possible_actions_list))] #random.choice(list(possible_actions.keys()))
+    action_b = possible_actions_list[randint(0, len(possible_actions_list)-1)] #random.choice(list(possible_actions.keys()))
     while action_b == action_a:
-        action_b = possible_actions_list[randint(0, len(possible_actions_list))] #random.choice(list(possible_actions.keys()))
+        action_b = possible_actions_list[randint(0, len(possible_actions_list)-1)] #random.choice(list(possible_actions.keys()))
     actionB = AppAction(action_b[0], parse_float(action_b[3]), action_b[2], action_b[1], int(action_b[4]))
     # Check that action A is different to action B
     # Show both actions on screen
@@ -193,14 +209,23 @@ mr_q1: Sprite = None
 mr_q1 = sprites.create(assets.image("""
              mr_quack
          """), SpriteKind.duck)
-mr_q1.set_position(82, 50)
+mr_q1.set_position(80, 50)
 
 
 mr_q2: Sprite = None
 mr_q2 = sprites.create(assets.image("""
              mr_quack
          """), SpriteKind.duck)
-mr_q2.set_position(82, 110)
+mr_q2.set_position(80, 110)
+
+scene.set_background_image(assets.image("""
+    my_background
+"""))
+
+game.splash("Welcome to DuckDuckQuack!")
+game.splash("Press the A and B buttons\nto select options")
+game.splash("Try to keep the duck\npopulation alive!")
+game.splash("Round 1")
 
 
 boot_up()
