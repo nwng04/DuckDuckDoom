@@ -2,7 +2,8 @@
     "name": "quack?",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "story": "github:riknoll/arcade-story#v1.3.1"
     },
     "files": [
         "main.blocks",
@@ -11,7 +12,9 @@
         "assets.json",
         "images.g.jres",
         "images.g.ts",
-        "main.py"
+        "main.py",
+        "tilemap.g.jres",
+        "tilemap.g.ts"
     ],
     "testFiles": [
         "test.ts"

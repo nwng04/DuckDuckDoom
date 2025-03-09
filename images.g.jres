@@ -4,6 +4,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "ducklogo"
     },
+    "image2": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "myImage"
+    },
     "song1": {
         "data": "00780004080200",
         "mimeType": "application/mkcd-song",
