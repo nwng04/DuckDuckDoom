@@ -114,6 +114,13 @@ function perform_action(action: AppAction, isNewAction: boolean) {
         }
     }
     
+    if (action.impact_symbol == "PLUS" || action.impact_symbol == "MULTIPLY" && action.impact_no >= 1) {
+        
+    } else {
+        // negative
+        
+    }
+    
     //  All not old adults give birth to a baby
     let babiesMade = 0
     // sum(ducks_alive[4:10]) * birthRate
@@ -164,6 +171,8 @@ function update_ducks_alive() {
 
 //  Move all ducks one step to the left and add 0 to the right
 function on_button_press(action: AppAction) {
+    let spritex: Sprite;
+    let xpos: number;
     
     process_longstanding_effects()
     perform_action(action, true)
@@ -184,15 +193,18 @@ function on_button_press(action: AppAction) {
     }
     
     rounds_survived = rounds_survived + 1
-    let spritex = sprites.create(assets.image`
-             mr_quack
-         `, SpriteKind.duck)
-    let xpos = randint(10, 50)
-    if (xpos > 30) {
-        xpos = xpos + 120
+    if (rounds_survived % 2 == 0) {
+        spritex = sprites.create(assets.image`
+                mr_quack
+            `, SpriteKind.duck)
+        xpos = randint(10, 50)
+        if (xpos > 30) {
+            xpos = xpos + 120
+        }
+        
+        spritex.setPosition(xpos, randint(20, 110))
     }
     
-    spritex.setPosition(xpos, randint(20, 110))
     game.splash("Ducks Alive: " + sum_ducks_alive + "\nDucks Dead: " + ducks_dead)
     game.splash("Round " + (rounds_survived + 1))
     //  Select random action A

@@ -101,6 +101,11 @@ def perform_action(action: AppAction, isNewAction: bool):
                 break
             counter = counter + 1
 
+    if action.impact_symbol == "PLUS" or (action.impact_symbol == "MULTIPLY" and action.impact_no >= 1):
+        pass
+    else:
+        #negative
+        pass
 
     # All not old adults give birth to a baby
     babiesMade = 0 #sum(ducks_alive[4:10]) * birthRate
@@ -161,15 +166,15 @@ def on_button_press(action: AppAction):
         return
         
     rounds_survived = rounds_survived + 1
+    if rounds_survived % 2 == 0:
+        spritex = sprites.create(assets.image("""
+                mr_quack
+            """), SpriteKind.duck)
+        xpos = randint(10, 50)
 
-    spritex = sprites.create(assets.image("""
-             mr_quack
-         """), SpriteKind.duck)
-    xpos = randint(10, 50)
-
-    if xpos > 30:
-        xpos = xpos + 120
-    spritex.set_position(xpos, randint(20, 110))
+        if xpos > 30:
+            xpos = xpos + 120
+        spritex.set_position(xpos, randint(20, 110))
 
     game.splash("Ducks Alive: " + sum_ducks_alive + "\nDucks Dead: " + ducks_dead)
     game.splash("Round " + (rounds_survived + 1))
