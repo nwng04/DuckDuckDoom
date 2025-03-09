@@ -102,9 +102,16 @@ def perform_action(action: AppAction, isNewAction: bool):
             counter = counter + 1
 
     if action.impact_symbol == "PLUS" or (action.impact_symbol == "MULTIPLY" and action.impact_no >= 1):
+        music.play(music.create_song(assets.song("""
+                good_sound
+            """)),
+            music.PlaybackMode.IN_BACKGROUND)
         pass
     else:
-        #negative
+        music.play(music.create_song(assets.song("""
+                bad_sound
+            """)),
+            music.PlaybackMode.IN_BACKGROUND)
         pass
 
     # All not old adults give birth to a baby

@@ -115,9 +115,14 @@ function perform_action(action: AppAction, isNewAction: boolean) {
     }
     
     if (action.impact_symbol == "PLUS" || action.impact_symbol == "MULTIPLY" && action.impact_no >= 1) {
+        music.play(music.createSong(assets.song`
+                good_sound
+            `), music.PlaybackMode.InBackground)
         
     } else {
-        // negative
+        music.play(music.createSong(assets.song`
+                bad_sound
+            `), music.PlaybackMode.InBackground)
         
     }
     
