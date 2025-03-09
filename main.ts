@@ -14,6 +14,26 @@ class AppAction {
     
 }
 
+class SpriteKind {
+    static duck: number
+    private ___duck_is_set: boolean
+    private ___duck: number
+    get duck(): number {
+        return this.___duck_is_set ? this.___duck : SpriteKind.duck
+    }
+    set duck(value: number) {
+        this.___duck_is_set = true
+        this.___duck = value
+    }
+    
+    public static __initSpriteKind() {
+        SpriteKind.duck = SpriteKind.create()
+    }
+    
+}
+
+SpriteKind.__initSpriteKind()
+
 //  [0-3 are pensioners, 4-9 are adults, 10-12 are babies, 13-15 are eggs]
 let ducks_alive = [0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5, 1, 2, 3]
 let ducks_dead = 0
@@ -163,10 +183,8 @@ function on_button_press(action: AppAction) {
     process_longstanding_effects()
     perform_action(action, true)
     update_ducks_alive()
-    game.splash(`Ducks Alive: \{ducks_alive\}
-Ducks Dead: \{ducks_dead\}`)
-    console.log("Ducks Alive: {ducks_alive}")
-    console.log("Ducks Dead: {ducks_dead}")
+    // print(f"Ducks Alive: {ducks_alive}")
+    // print(f"Ducks Dead: {ducks_dead}")
     let sum_ducks_alive = 0
     let counter = 0
     while (counter < ducks_alive.length) {
@@ -178,6 +196,7 @@ Ducks Dead: \{ducks_dead\}`)
         return
     }
     
+    game.splash("Ducks Alive: " + sum_ducks_alive + "\nDucks Dead: " + ducks_dead)
     //  Select random action A
     //  Select random action B
     //  Check that action A is different to action B
@@ -201,10 +220,14 @@ function boot_up() {
     actionB = new AppAction(action_b[0], parseFloat(action_b[3]), action_b[2], action_b[1], parseInt(action_b[4]))
     //  Check that action A is different to action B
     //  Show both actions on screen
-    console.log("Action A: {actionA.action}")
-    console.log("Action B: {actionB.action}")
+    mr_q1.sayText("Action A: " + actionA.action)
+    mr_q2.sayText("Action B: " + actionB.action)
 }
 
+// story.print_text("Action A: " + actionA.action, 0, 0)
+// story.print_text("Action B: " + actionB.action, 0, 50)
+// print(f"Action A: {actionA.action}")
+// print(f"Action B: {actionB.action}")
 controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
     on_button_press(actionA)
 })
@@ -215,3 +238,13 @@ boot_up()
 game.setGameOverEffect(false, effects.melt)
 game.setGameOverMessage(false, "all the ducks r dead :(")
 game.setGameOverPlayable(false, music.melodyPlayable(music.siren), true)
+let mr_q1 : Sprite = null
+mr_q1 = sprites.create(assets.image`
+            mr_quack
+        `, SpriteKind.duck)
+mr_q1.setPosition(20, 50)
+let mr_q2 : Sprite = null
+mr_q2 = sprites.create(assets.image`
+            mr_quack
+        `, SpriteKind.duck)
+mr_q2.setPosition(20, 50)

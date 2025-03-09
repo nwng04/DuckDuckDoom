@@ -6,6 +6,9 @@ class AppAction:
         self.impact_type = impact_type
         self.span = span
 
+class SpriteKind:
+    duck = SpriteKind.create()
+
 # [0-3 are pensioners, 4-9 are adults, 10-12 are babies, 13-15 are eggs]
 ducks_alive: List[number] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5, 1, 2, 3]
 ducks_dead: number = 0
@@ -139,9 +142,8 @@ def on_button_press(action: AppAction):
     perform_action(action, True)
     update_ducks_alive()
 
-    game.splash(f"Ducks Alive: {ducks_alive}\nDucks Dead: {ducks_dead}")
-    print(f"Ducks Alive: {ducks_alive}")
-    print(f"Ducks Dead: {ducks_dead}")
+    #print(f"Ducks Alive: {ducks_alive}")
+    #print(f"Ducks Dead: {ducks_dead}")
 
     sum_ducks_alive = 0
     counter = 0
@@ -152,6 +154,8 @@ def on_button_press(action: AppAction):
     if sum_ducks_alive < 1:
         game.game_over(False)
         return
+
+    game.splash("Ducks Alive: " + sum_ducks_alive + "\nDucks Dead: " + ducks_dead)
 
     # Select random action A
     # Select random action B
@@ -171,8 +175,13 @@ def boot_up():
     actionB = AppAction(action_b[0], parse_float(action_b[3]), action_b[2], action_b[1], int(action_b[4]))
     # Check that action A is different to action B
     # Show both actions on screen
-    print(f"Action A: {actionA.action}")
-    print(f"Action B: {actionB.action}")
+    
+    mr_q1.say_text("Action A: " + actionA.action)
+    mr_q2.say_text("Action B: " + actionB.action)
+    #story.print_text("Action A: " + actionA.action, 0, 0)
+    #story.print_text("Action B: " + actionB.action, 0, 50)
+    #print(f"Action A: {actionA.action}")
+    #print(f"Action B: {actionB.action}")
 
 def on_a_pressed():
     on_button_press(actionA)
@@ -187,3 +196,17 @@ boot_up()
 game.set_game_over_effect(False, effects.melt)
 game.set_game_over_message(False, "all the ducks r dead :(")
 game.set_game_over_playable(False, music.melody_playable(music.siren), True)
+
+mr_q1: Sprite = None
+mr_q1 = sprites.create(assets.image("""
+            mr_quack
+        """), SpriteKind.duck)
+
+mr_q1.set_position(20, 50)
+
+mr_q2: Sprite = None
+mr_q2 = sprites.create(assets.image("""
+            mr_quack
+        """), SpriteKind.duck)
+
+mr_q2.set_position(20, 50)
