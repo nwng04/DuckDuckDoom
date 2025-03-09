@@ -47,6 +47,18 @@
         "displayName": "quack 2",
         "namespace": "mySongs."
     },
+    "song5": {
+        "data": "0078000408020101001c000f05001202c102c20100040500280000006400280003140006020004120000000400011d040008000120080010000127",
+        "mimeType": "application/mkcd-song",
+        "displayName": "good_sound",
+        "namespace": "mySongs."
+    },
+    "song4": {
+        "data": "0078000408020104001c00100500640000041e000004000000000000000000000000000a040004120000000400012a04000800012708001c000120",
+        "mimeType": "application/mkcd-song",
+        "displayName": "bad_sound",
+        "namespace": "mySongs."
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
