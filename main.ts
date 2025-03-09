@@ -163,8 +163,6 @@ function on_button_press(action: AppAction) {
     process_longstanding_effects()
     perform_action(action, true)
     update_ducks_alive()
-    game.splash(`Ducks Alive: \{ducks_alive\}
-Ducks Dead: \{ducks_dead\}`)
     console.log("Ducks Alive: {ducks_alive}")
     console.log("Ducks Dead: {ducks_dead}")
     let sum_ducks_alive = 0
@@ -178,6 +176,7 @@ Ducks Dead: \{ducks_dead\}`)
         return
     }
     
+    game.splash("Ducks Alive: " + sum_ducks_alive + "\nDucks Dead: " + ducks_dead)
     //  Select random action A
     //  Select random action B
     //  Check that action A is different to action B

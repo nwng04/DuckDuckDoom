@@ -139,7 +139,6 @@ def on_button_press(action: AppAction):
     perform_action(action, True)
     update_ducks_alive()
 
-    game.splash(f"Ducks Alive: {ducks_alive}\nDucks Dead: {ducks_dead}")
     print(f"Ducks Alive: {ducks_alive}")
     print(f"Ducks Dead: {ducks_dead}")
 
@@ -152,7 +151,8 @@ def on_button_press(action: AppAction):
     if sum_ducks_alive < 1:
         game.game_over(False)
         return
-
+        
+    game.splash("Ducks Alive: " + sum_ducks_alive + "\nDucks Dead: " + ducks_dead)
     # Select random action A
     # Select random action B
     # Check that action A is different to action B
