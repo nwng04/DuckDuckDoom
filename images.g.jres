@@ -9,6 +9,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "myImage"
     },
+    "image3": {
+        "data": "hwQQABAAAAAAAAAAAMsMCwAAAACw3bsLAAAAANvdWwwAAACw3b1dzAAAu9vdW7XMALBbVdVbzc0Au1VVVdvczQBbHV1Vxd3NAFvxX1VVVc2wW/9LVVVVxVtb1URVVVXFtVvdRFVVVbULsEREVVVVuwAATLRbVdULAABAC7C7uwAAALAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "mr_quack"
+    },
     "song1": {
         "data": "00780004080200",
         "mimeType": "application/mkcd-song",

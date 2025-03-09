@@ -14,6 +14,10 @@ class AppAction {
     
 }
 
+namespace SpriteKind {
+    export const duck = SpriteKind.create()
+}
+
 //  [0-3 are pensioners, 4-9 are adults, 10-12 are babies, 13-15 are eggs]
 let ducks_alive = [0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5, 1, 2, 3]
 let ducks_dead = 0
@@ -200,6 +204,8 @@ function boot_up() {
     actionB = new AppAction(action_b[0], parseFloat(action_b[3]), action_b[2], action_b[1], parseInt(action_b[4]))
     //  Check that action A is different to action B
     //  Show both actions on screen
+    mr_q1.sayText("Action A: " + actionA.action)
+    mr_q2.sayText("Action B: " + actionB.action)
     console.log("Action A: {actionA.action}")
     console.log("Action B: {actionB.action}")
 }
@@ -210,6 +216,16 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
 controller.B.onEvent(ControllerButtonEvent.Pressed, function on_b_pressed() {
     on_button_press(actionB)
 })
+let mr_q1 : Sprite = null
+mr_q1 = sprites.create(assets.image`
+             mr_quack
+         `, SpriteKind.duck)
+mr_q1.setPosition(90, 50)
+let mr_q2 : Sprite = null
+mr_q2 = sprites.create(assets.image`
+             mr_quack
+         `, SpriteKind.duck)
+mr_q2.setPosition(90, 110)
 boot_up()
 game.setGameOverEffect(false, effects.melt)
 game.setGameOverMessage(false, "all the ducks r dead :(")
