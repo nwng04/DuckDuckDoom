@@ -193,14 +193,14 @@ mr_q1: Sprite = None
 mr_q1 = sprites.create(assets.image("""
              mr_quack
          """), SpriteKind.duck)
-mr_q1.set_position(90, 50)
+mr_q1.set_position(82, 50)
 
 
 mr_q2: Sprite = None
 mr_q2 = sprites.create(assets.image("""
              mr_quack
          """), SpriteKind.duck)
-mr_q2.set_position(90, 110)
+mr_q2.set_position(82, 110)
 
 
 boot_up()

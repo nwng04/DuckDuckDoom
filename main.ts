@@ -220,12 +220,12 @@ let mr_q1 : Sprite = null
 mr_q1 = sprites.create(assets.image`
              mr_quack
          `, SpriteKind.duck)
-mr_q1.setPosition(90, 50)
+mr_q1.setPosition(82, 50)
 let mr_q2 : Sprite = null
 mr_q2 = sprites.create(assets.image`
              mr_quack
          `, SpriteKind.duck)
-mr_q2.setPosition(90, 110)
+mr_q2.setPosition(82, 110)
 boot_up()
 game.setGameOverEffect(false, effects.melt)
 game.setGameOverMessage(false, "all the ducks r dead :(")
